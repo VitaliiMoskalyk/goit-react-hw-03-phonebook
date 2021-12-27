@@ -1,4 +1,4 @@
-import { Component } from "react/cjs/react.development";
+import { Component } from "react";
 import Form from './components/Form';
 import Filter from './components/Filter';
 import ContactItem from './components/Contacts';

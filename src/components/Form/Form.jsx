@@ -1,4 +1,4 @@
-import { Component } from "react/cjs/react.development";
+import { Component } from "react";
 import { nanoid } from "nanoid";
 
 class Form extends Component {
