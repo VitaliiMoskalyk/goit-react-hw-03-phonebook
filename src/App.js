@@ -11,7 +11,8 @@ class App extends Component {
   }
   
   onSubmitForm = data => {
-    this.state.contacts.find(contact => contact.name.toLowerCase().includes(data.name.toLowerCase())) ?
+    const normolizeData = data.name.toLowerCase();
+    this.state.contacts.find((contact) => contact.name.toLowerCase()===normolizeData) ?
       alert(`${data.name} is already in contacts `)
       : this.setState((prevState) => ({ contacts: [data, ...prevState.contacts] }));
   }
@@ -39,7 +40,9 @@ class App extends Component {
       <h1>Phonebook</h1>
       <Form onSubmit={this.onSubmitForm}/>
       <Filter state={this.state.filter} onChange={this.filterChanger}/>
-    <ContactList><ContactItem data={visibleSearch} deleteFunction={this.deleteContacts}/></ContactList>
+      <ContactList>
+        <ContactItem data={visibleSearch} deleteFunction={this.deleteContacts} />
+      </ContactList>
       </>
   }
 }

@@ -1,19 +1,22 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
-
 class Form extends Component {
   state = {
-    id: "",
     name: "",
     number: "",
   };
 
-  inputReader = (evt) =>
-    this.setState({ [evt.target.name]: evt.target.value, id: nanoid(4) });
+  inputReader = (evt) => this.setState({ [evt.target.name]: evt.target.value });
+
+  generateContact = (name, number) => {
+    return { name, number, id: nanoid(4) };
+  };
 
   contactsAdder = (evt) => {
     evt.preventDefault();
-    this.props.onSubmit(this.state);
+    const { name, number } = this.state;
+    const newContact = this.generateContact(name, number);
+    this.props.onSubmit(newContact);
     this.setState({ name: "", number: "" });
   };
 
